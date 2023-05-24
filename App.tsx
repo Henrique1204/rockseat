@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 
-export default function App() {
+
+
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+   <View
+      style={{
+        padding: 24,
+        backgroundColor: '#131016',
+        flex: 1,
+      }}
+   >
+     <Text
+      style={{
+        marginTop: 48,
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#FDFEFD',
+      }}
+     >
+      Nome do evento
+    </Text>
+
+     <Text
+      style={{
+        fontSize: 16,
+        color: '#6B6B6B',
+      }}
+    >
+      Sexta, 4 de novembro de 2022</Text>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

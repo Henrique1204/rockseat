@@ -16,14 +16,22 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: '#6B6B6B',
 	},
+	form: {
+		width: '100%',
+		marginTop: 36,
+		marginBottom: 42,
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: 12,
+	},
 	input: {
 		height: 56,
 		padding: 16,
 		borderRadius: 5,
-		marginTop: 16,
 		fontSize: 16,
 		color: '#FFF',
 		backgroundColor: '#1F1E25',
+		flex: 1,
 	},
 	buttonText: {
 		color: '#FFF',

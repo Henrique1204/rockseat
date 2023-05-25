@@ -12,15 +12,17 @@ const Home: React.FC = () => {
 
 			<Text style={Styles.eventDate}>Sexta, 4 de novembro de 2022</Text>
 
-			<TextInput
-				style={Styles.input}
-				placeholder='Nome do participante'
-				placeholderTextColor='#6B6B6B'
-			/>
+			<View style={Styles.form}>
+				<TextInput
+					style={Styles.input}
+					placeholder='Nome do participante'
+					placeholderTextColor='#6B6B6B'
+				/>
 
-			<TouchableOpacity style={Styles.button} onPress={handleParticipantAdd}>
-				<Text style={Styles.buttonText}>+</Text>
-			</TouchableOpacity>
+				<TouchableOpacity style={Styles.button} onPress={handleParticipantAdd}>
+					<Text style={Styles.buttonText}>+</Text>
+				</TouchableOpacity>
+			</View>
 		</View>
 	);
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 
+import Participant from '../../components/Participant';
+
 import Styles from './styles';
 
 const Home: React.FC = () => {
@@ -23,6 +25,8 @@ const Home: React.FC = () => {
 					<Text style={Styles.buttonText}>+</Text>
 				</TouchableOpacity>
 			</View>
+
+			<Participant />
 		</View>
 	);
 };

@@ -8,6 +8,8 @@ import Styles from './styles';
 const Home: React.FC = () => {
 	const handleParticipantAdd = () => {};
 
+	const handleParticipantRemove = (name: string) => {};
+
 	return (
 		<View style={Styles.container}>
 			<Text style={Styles.eventName}>Nome do evento</Text>
@@ -26,7 +28,13 @@ const Home: React.FC = () => {
 				</TouchableOpacity>
 			</View>
 
-			<Participant />
+			<Participant name='Paulo Henrique' onRemove={handleParticipantRemove} />
+
+			<Participant name='Pedro Henrique' onRemove={handleParticipantRemove} />
+
+			<Participant name='João Henrique' onRemove={handleParticipantRemove} />
+
+			<Participant name='Luiz Henrique' onRemove={handleParticipantRemove} />
 		</View>
 	);
 };

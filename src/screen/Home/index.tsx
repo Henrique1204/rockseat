@@ -1,10 +1,11 @@
 import React from 'react';
+
 import {
 	Text,
 	View,
 	TextInput,
 	TouchableOpacity,
-	ScrollView,
+	FlatList,
 } from 'react-native';
 
 import Participant from '../../components/Participant';
@@ -48,17 +49,20 @@ const Home: React.FC = () => {
 				</TouchableOpacity>
 			</View>
 
-			<ScrollView />
-
-			<ScrollView showsVerticalScrollIndicator={false}>
-				{participants.map((name, key) => (
-					<Participant
-						key={`${key}_${name}`}
-						name={name}
-						onRemove={handleParticipantRemove}
-					/>
-				))}
-			</ScrollView>
+			<FlatList
+				data={[]}
+				keyExtractor={(name) => name}
+				showsVerticalScrollIndicator={false}
+				renderItem={({ item: name }) => (
+					<Participant name={name} onRemove={handleParticipantRemove} />
+				)}
+				ListEmptyComponent={() => (
+					<Text style={Styles.listEmptyText}>
+						Ninguém chegou ao evento ainda? Adicione nomes a sua lita de
+						participantes.
+					</Text>
+				)}
+			/>
 		</View>
 	);
 };

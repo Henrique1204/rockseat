@@ -27,7 +27,11 @@ const Home: React.FC = () => {
 		refInput.current?.focus();
 	};
 
-	const handleParticipantRemove = (name: string) => {};
+	const handleParticipantRemove = (name: string) => {
+		setParticipants((prev) =>
+			prev.filter((participant) => participant !== name)
+		);
+	};
 
 	return (
 		<View style={Styles.container}>

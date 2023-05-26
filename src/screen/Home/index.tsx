@@ -12,22 +12,20 @@ import Participant from '../../components/Participant';
 
 import Styles from './styles';
 
-const participants = [
-	'Paulo',
-	'Henrique',
-	'Luiz',
-	'Cris',
-	'Ana',
-	'Alice',
-	'Laura',
-	'Mioguel',
-	'João',
-	'Jennyfer',
-	'Emily',
-];
-
 const Home: React.FC = () => {
-	const handleParticipantAdd = () => {};
+	const [participantName, setParticipantName] = React.useState<string>('');
+	const [participants, setParticipants] = React.useState<string[]>([]);
+
+	const refInput = React.useRef<TextInput>(null);
+
+	const handleParticipantAdd = () => {
+		if (participants.includes(participantName)) return;
+
+		setParticipantName('');
+		setParticipants((prev) => [...prev, participantName]);
+
+		refInput.current?.focus();
+	};
 
 	const handleParticipantRemove = (name: string) => {};
 
@@ -39,9 +37,12 @@ const Home: React.FC = () => {
 
 			<View style={Styles.form}>
 				<TextInput
+					ref={refInput}
 					style={Styles.input}
 					placeholder='Nome do participante'
 					placeholderTextColor='#6B6B6B'
+					defaultValue={participantName}
+					onChangeText={setParticipantName}
 				/>
 
 				<TouchableOpacity style={Styles.button} onPress={handleParticipantAdd}>
@@ -50,7 +51,7 @@ const Home: React.FC = () => {
 			</View>
 
 			<FlatList
-				data={[]}
+				data={participants}
 				keyExtractor={(name) => name}
 				showsVerticalScrollIndicator={false}
 				renderItem={({ item: name }) => (

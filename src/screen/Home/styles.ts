@@ -45,6 +45,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	buttonDisabled: {
+		width: 56,
+		height: 56,
+		borderRadius: 5,
+		backgroundColor: '#6B6B6B',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 	listEmptyText: {
 		width: '100%',
 		fontSize: 14,

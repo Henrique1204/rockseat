@@ -6,9 +6,12 @@ import {
 	TextInput,
 	TouchableOpacity,
 	FlatList,
+	Alert,
 } from 'react-native';
 
 import Participant from '../../components/Participant';
+
+import isEmptyString from '../../helpers/isEmptyString';
 
 import Styles from './styles';
 
@@ -18,8 +21,17 @@ const Home: React.FC = () => {
 
 	const refInput = React.useRef<TextInput>(null);
 
+	const participantAddDisabled = isEmptyString(participantName);
+
 	const handleParticipantAdd = () => {
-		if (participants.includes(participantName)) return;
+		if (participants.includes(participantName)) {
+			Alert.alert(
+				'Participante já existe.',
+				'Já existe um participante na lista com esse nome.'
+			);
+
+			return;
+		}
 
 		setParticipantName('');
 		setParticipants((prev) => [...prev, participantName]);
@@ -28,8 +40,22 @@ const Home: React.FC = () => {
 	};
 
 	const handleParticipantRemove = (name: string) => {
-		setParticipants((prev) =>
-			prev.filter((participant) => participant !== name)
+		const confirmAction = () => {
+			setParticipants((prev) =>
+				prev.filter((participant) => participant !== name)
+			);
+		};
+
+		Alert.alert(
+			'Remover',
+			`Você tem certeza que quer remover o participante ${name}?`,
+			[
+				{
+					text: 'Sim',
+					onPress: confirmAction,
+				},
+				{ text: 'Não' },
+			]
 		);
 	};
 
@@ -49,7 +75,11 @@ const Home: React.FC = () => {
 					onChangeText={setParticipantName}
 				/>
 
-				<TouchableOpacity style={Styles.button} onPress={handleParticipantAdd}>
+				<TouchableOpacity
+					style={participantAddDisabled ? Styles.buttonDisabled : Styles.button}
+					onPress={handleParticipantAdd}
+					disabled={participantAddDisabled}
+				>
 					<Text style={Styles.buttonText}>+</Text>
 				</TouchableOpacity>
 			</View>
